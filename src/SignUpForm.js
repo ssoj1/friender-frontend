@@ -11,7 +11,7 @@ function SignUpForm({ handleSignUp }) {
     lastName: "",
     email: "",
     zipCode: "",
-    photo: "",
+    photo: null,
     hobbies: "", 
     interests: "",
     password: ""
@@ -31,6 +31,7 @@ function SignUpForm({ handleSignUp }) {
   /** Update form input. */
   function handleChange(evt) {
     const { name, value } = evt.target;
+    console.log(evt.target.files)
     setFormData(fData => ({
       ...fData,
       [name]: value,
@@ -52,7 +53,7 @@ function SignUpForm({ handleSignUp }) {
   return (
 
     <div className="row justify-content-center pt-3">
-      <h1>Sign Up</h1>
+      <h2>Sign Up</h2>
         <form className="SignUpForm col-8" onSubmit={handleSubmit}>
 
           <div className="form-group">
@@ -104,7 +105,6 @@ function SignUpForm({ handleSignUp }) {
               className="form-control"
               onChange={handleChange}
               value={formData.email}
-              aria-label="Email"
             />
           </div>
           <div className="form-group">
@@ -117,7 +117,6 @@ function SignUpForm({ handleSignUp }) {
               className="form-control"
               onChange={handleChange}
               value={formData.zipCode}
-              aria-label="Last Name"
             />
           </div>
           <div className="form-group">
@@ -128,11 +127,10 @@ function SignUpForm({ handleSignUp }) {
               id="SignUpForm-photo"
               name="photo"
               type="file"
-              accept="image/png, image/jpeg"
+            //   accept="image/png, image/jpeg"
               className="form-control"
               onChange={handleChange}
-              value={formData.photo}
-              aria-label="Last Name"
+            //   value={formData.photo}
             />
           </div>
           <div className="form-group">
@@ -145,7 +143,6 @@ function SignUpForm({ handleSignUp }) {
               className="form-control"
               onChange={handleChange}
               value={formData.hobbies}
-              aria-label="Last Name"
             />
           </div>
           <div className="form-group">
@@ -158,7 +155,6 @@ function SignUpForm({ handleSignUp }) {
               className="form-control"
               onChange={handleChange}
               value={formData.interests}
-              aria-label="Last Name"
             />
           </div>
           <div className="form-group">
@@ -171,7 +167,6 @@ function SignUpForm({ handleSignUp }) {
               className="form-control"
               onChange={handleChange}
               value={formData.password}
-              aria-label="Submit"
             />
           </div>
           {message && <Alert message={message} />}
