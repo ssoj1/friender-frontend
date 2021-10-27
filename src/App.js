@@ -21,13 +21,12 @@ function App() {
     let dataForBackend = new FormData();
 
     for (let key in formData) {
-      dataForBackend.append(key, formData.key);
+      dataForBackend.append(key, formData[key]);
     };
 
+    console.log("dataForBackend.get('username') is ", dataForBackend.get("username"))
 
-
-
-    const token = await FrienderApi.registerUser(formData);
+    const token = await FrienderApi.registerUser(dataForBackend);
     setToken(token);
     // setRedirectRequired(true);
   }
