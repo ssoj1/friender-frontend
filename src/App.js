@@ -16,6 +16,17 @@ function App() {
   /** */
   async function handleSignUp(formData) {
     console.log("In handleSignup formdata: ", formData);
+    // loop through and append each key/value pair into new FofmData class 
+
+    let dataForBackend = new FormData();
+
+    for (let key in formData) {
+      dataForBackend.append(key, formData.key);
+    };
+
+
+
+
     const token = await FrienderApi.registerUser(formData);
     setToken(token);
     // setRedirectRequired(true);

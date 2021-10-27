@@ -82,10 +82,10 @@ class FrienderApi {
    * throws error if not successful
    * */
   static async registerUser(userData) {
-    console.log("registerUser userData ", userData)
+    console.log("registerUser userData ", userData);
 
     const res = await this.request(`auth/register`, userData, 'post');
-    console.log("register res: ", res)
+    console.log("register res: ", res);
     return res.token;
 
   }

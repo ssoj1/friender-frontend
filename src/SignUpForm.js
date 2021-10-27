@@ -10,7 +10,7 @@ function SignUpForm({ handleSignUp }) {
     firstName: "",
     lastName: "",
     email: "",
-    zipCode: "",
+    zipcode: "",
     photo: null,
     hobbies: "", 
     interests: "",
@@ -20,7 +20,7 @@ function SignUpForm({ handleSignUp }) {
   const [formData, setFormData] = useState(initialFormData);
   const [message, setMessage] = useState(null);
   const [redirectRequired, setRedirectRequired] = useState(false);
-  // const [photo, setPhoto] = useState(null);
+  const [photo, setPhoto] = useState(null);
 
   console.log("* SignUpForm ", {
     handleSignUp,
@@ -32,19 +32,14 @@ function SignUpForm({ handleSignUp }) {
   /** Update form input. */
   function handleChange(evt) {
     const { name, value } = evt.target;
-    // console.log("file: ", evt.target.files[0])
     let files = evt.target.files;
-    let file = files ? evt.target.files[0]: null
-    console.log("files: ", files)
-    console.log("file: ", evt.target.files[0])
-    console.log("file: ", file)
+    let file = files ? setPhoto(evt.target.files[0]) : null ;
+
     setFormData(fData => ({
       ...fData,
       [name]: value,
-      photo: file,
+      photo: photo,
     }));
-    // setPhoto(evt.target.files[0]);
-
   }
 
   /** Call parent function and clear form. */
@@ -117,15 +112,15 @@ function SignUpForm({ handleSignUp }) {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="SignUpForm-zipCode">
+            <label htmlFor="SignUpForm-zipcode">
               Zip Code
             </label>
             <input
-              id="SignUpForm-zipCode"
-              name="zipCode"
+              id="SignUpForm-zipcode"
+              name="zipcode"
               className="form-control"
               onChange={handleChange}
-              value={formData.zipCode}
+              value={formData.zipcode}
             />
           </div>
           <div className="form-group">
