@@ -20,6 +20,7 @@ function SignUpForm({ handleSignUp }) {
   const [formData, setFormData] = useState(initialFormData);
   const [message, setMessage] = useState(null);
   const [redirectRequired, setRedirectRequired] = useState(false);
+  // const [photo, setPhoto] = useState(null);
 
   console.log("* SignUpForm ", {
     handleSignUp,
@@ -31,11 +32,19 @@ function SignUpForm({ handleSignUp }) {
   /** Update form input. */
   function handleChange(evt) {
     const { name, value } = evt.target;
-    console.log(evt.target.files)
+    // console.log("file: ", evt.target.files[0])
+    let files = evt.target.files;
+    let file = files ? evt.target.files[0]: null
+    console.log("files: ", files)
+    console.log("file: ", evt.target.files[0])
+    console.log("file: ", file)
     setFormData(fData => ({
       ...fData,
       [name]: value,
+      photo: file,
     }));
+    // setPhoto(evt.target.files[0]);
+
   }
 
   /** Call parent function and clear form. */
@@ -130,7 +139,7 @@ function SignUpForm({ handleSignUp }) {
             //   accept="image/png, image/jpeg"
               className="form-control"
               onChange={handleChange}
-            //   value={formData.photo}
+              // value={formData.photo.name}
             />
           </div>
           <div className="form-group">

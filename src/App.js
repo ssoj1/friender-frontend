@@ -15,6 +15,7 @@ function App() {
 
   /** */
   async function handleSignUp(formData) {
+    console.log("In handleSignup formdata: ", formData);
     const token = await FrienderApi.registerUser(formData);
     setToken(token);
     // setRedirectRequired(true);
