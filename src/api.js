@@ -37,6 +37,25 @@ class FrienderApi {
     }
   }
 
+
+  /** Get the current user. */
+
+  static async getCurrentUser(id) {
+    let res = await this.request(`users/${id}`);
+    return res.user;
+  }
+
+  /** Get token for login from username, password. */
+
+  static async login(data) {
+    let res = await this.request(`auth/token`, data, "post");
+    return res.token;
+  }
+
+
+
+
+
   // Individual API routes
 
 
@@ -46,35 +65,35 @@ class FrienderApi {
       return res.users;
   }
 
-  static async checkUserCredentials(username, password) {
-    const credentials = {
-      username,
-      password
-    };
-    console.log({credentials})
-    const res = await this.request('auth/token', credentials, 'post');
-    console.log("res in check user credentials", res);
-    return res.token;
-  }
+  // static async checkUserCredentials(username, password) {
+  //   const credentials = {
+  //     username,
+  //     password
+  //   };
+  //   console.log({credentials})
+  //   const res = await this.request('auth/token', credentials, 'post');
+  //   console.log("res in check user credentials", res);
+  //   return res.token;
+  // }
 
-  /** Accepts token string and returns user data based on that token
-   * accepts token
-   * returns user data like: { username, firstName, lastName, email, isAdmin }
-   * returns null if token payload is null (on initial render)
-   * throws error if not successful
-   * */
-  static async getUserByToken(token) {
-    console.log("token in get user by token", token)
-    const payload = jwt.decode(token);
-    console.log("payload in getuserbytoken", payload)
+  // /** Accepts token string and returns user data based on that token
+  //  * accepts token
+  //  * returns user data like: { username, firstName, lastName, email, isAdmin }
+  //  * returns null if token payload is null (on initial render)
+  //  * throws error if not successful
+  //  * */
+  // static async getUserByToken(token) {
+  //   console.log("token in get user by token", token)
+  //   const payload = jwt.decode(token);
+  //   console.log("payload in getuserbytoken", payload)
 
-    if (payload === null) {
-      return null;
-    } else {
-      const res = await this.request(`users/${payload.username}`);
-      return res.user;
-    };
-  }
+  //   if (payload === null) {
+  //     return null;
+  //   } else {
+  //     const res = await this.request(`users/${payload.username}`);
+  //     return res.user;
+  //   };
+  // }
 
   /** Registers user into database
    * accepts userdata {username, password}
@@ -82,7 +101,7 @@ class FrienderApi {
    * throws error if not successful
    * */
   static async registerUser(userData) {
-    console.log("registerUser userData.get('username') ", userData.get('username'));
+    // console.log("registerUser userData.get('username') ", userData.get('username'));
     // console.log("registerUser userData.get('username') ", userData.get('username'));
 
     const res = await this.request(`auth/register`, userData, 'post');

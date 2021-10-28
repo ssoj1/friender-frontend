@@ -4,7 +4,7 @@ import Alert from "./Alert";
 /** 
  * 
  */
-function SignUpForm({ handleSignUp }) {
+function SignUpForm({ signup }) {
   const initialFormData = {
     username: "",
     firstName: "",
@@ -23,7 +23,7 @@ function SignUpForm({ handleSignUp }) {
   // const [photo, setPhoto] = useState(null);
 
   console.log("* SignUpForm ", {
-    handleSignUp,
+    signup,
     formData,
     message,
     redirectRequired
@@ -54,7 +54,7 @@ function SignUpForm({ handleSignUp }) {
     evt.preventDefault();
     console.log("Check out formData ->", formData);
     try {
-      await handleSignUp(formData);
+      await signup(formData);
       setRedirectRequired(true);
     } catch (err) {
       setMessage(err);
