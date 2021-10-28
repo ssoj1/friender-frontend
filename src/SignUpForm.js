@@ -57,6 +57,7 @@ function SignUpForm({ handleSignUp }) {
       await handleSignUp(formData);
       setRedirectRequired(true);
     } catch (err) {
+      console.log("err is ", err)
       setMessage(err);
     };
   }
