@@ -13,14 +13,12 @@ import LoadingSpinner from "./LoadingSpinner";
  * 
  */
 function App() {
-  console.log("* App ");
-
   const [token, setToken] = useState("");
   const [currentUser, setCurrentUser] = useState(null);
   const [goRedirect, setGoRedirect] = useState(false);
   const [infoLoaded, setInfoLoaded] = useState(false);
 
-
+  console.log("* App ", {token, currentUser, goRedirect, infoLoaded});
   useEffect(function loadUserInfo() {
     console.debug("App useEffect loadUserInfo", "token=", token);
 
@@ -89,7 +87,7 @@ function App() {
   }
 
     // after login/signup success, redirect to /
-    // if (goRedirect) return <Redirect push to="/" />;
+    if (goRedirect) return <Redirect push to="/" />;
 
     if (!infoLoaded) return <LoadingSpinner />;
 

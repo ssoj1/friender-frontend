@@ -19,14 +19,14 @@ function SignUpForm({ signup }) {
 
   const [formData, setFormData] = useState(initialFormData);
   const [message, setMessage] = useState(null);
-  const [redirectRequired, setRedirectRequired] = useState(false);
+  // const [redirectRequired, setRedirectRequired] = useState(false);
   // const [photo, setPhoto] = useState(null);
 
   console.log("* SignUpForm ", {
     signup,
     formData,
-    message,
-    redirectRequired
+    message
+    // redirectRequired
   });
 
   /** Update form input. */
@@ -55,7 +55,7 @@ function SignUpForm({ signup }) {
     console.log("Check out formData ->", formData);
     try {
       await signup(formData);
-      setRedirectRequired(true);
+      // setRedirectRequired(true);
     } catch (err) {
       setMessage(err);
       console.log(err);
@@ -117,6 +117,7 @@ function SignUpForm({ signup }) {
               className="form-control"
               onChange={handleChange}
               value={formData.email}
+              aria-label="email"
             />
           </div>
           <div className="form-group">
@@ -129,6 +130,7 @@ function SignUpForm({ signup }) {
               className="form-control"
               onChange={handleChange}
               value={formData.zipcode}
+              aria-label="zipcode"
             />
           </div>
           <div className="form-group">
