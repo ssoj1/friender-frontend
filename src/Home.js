@@ -1,3 +1,5 @@
+// TO DO: add login and sign up buttons?
+
 import React, { useContext } from "react";
 // import { Link } from "react-router-dom";
 import "./Home.css";
@@ -5,16 +7,14 @@ import UserContext from "./UserContext";
 
 /** Home page of site.
  *
- * Shows welcome message or login/register buttons.
- *
- * Routed at /
+ * Shows welcome message when logged in.
  *
  * Routes -> Home
  */
 
 function Home() {
   const { currentUser } = useContext(UserContext);
-  console.debug("* Home", "currentUser=", currentUser);
+  console.log("* Home", "currentUser=", currentUser);
 
   return (
     <div className="Home container text-center mt-5">

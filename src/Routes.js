@@ -1,8 +1,10 @@
+// TO DO: update routes when FriendList component is completed
+
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Home from "./Home";
 import UserList from "./UserList";
-import FriendList from "./FriendList";
+// import FriendList from "./FriendList";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 import PrivateRoute from "./PrivateRoute";
@@ -14,6 +16,13 @@ import PrivateRoute from "./PrivateRoute";
  * wrapped by <PrivateRoute>, which is an authorization component.
  *
  * Visiting a non-existant route redirects to the homepage.
+ * 
+ * Props: 
+ * - login - function passed from App
+ * - signup - function passed from App
+ * - users - array of user objects like [{user}, ...]
+ * 
+ * App -> Routes -> {Home, LoginForm, SignUpForm, UserList, UserCard}
  */
 
 function Routes({ login, signup, users }) {

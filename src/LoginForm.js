@@ -4,12 +4,16 @@ import "./LoginForm.css";
 
 /** Login form.
  *
- * Shows form and manages update to state on changes.
  * On submission:
  * - calls login function prop
+ * 
+ * Props: 
+ * login - function passed from App
+ * 
+ * State: 
+ * - formData
  *
  * Routes -> LoginForm -> Alert
- * Routed as /login
  */
 
 function LoginForm({ login }) {
@@ -19,8 +23,8 @@ function LoginForm({ login }) {
   });
   const [formErrors, setFormErrors] = useState([]);
 
-  console.debug(
-    "LoginForm",
+  console.log(
+    "* LoginForm",
     "login=", typeof login,
     "formData=", formData,
     "formErrors", formErrors,

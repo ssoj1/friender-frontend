@@ -2,8 +2,12 @@ import { useState } from "react";
 import Alert from "./Alert";
 import "./SignUpForm.css";
 
-/** 
+/** SignUp form for new users
  * 
+ * Props: 
+ * - signup - function passed from App
+ * 
+ * Routes -> SignUpForm
  */
 function SignUpForm({ signup }) {
   const initialFormData = {
@@ -38,7 +42,7 @@ function SignUpForm({ signup }) {
     }));
   }
 
-  /** Call parent function and clear form. */
+  /** Call parent function. */
   async function handleSubmit(evt) {
     evt.preventDefault();
     console.log("Check out formData ->", formData);
@@ -129,7 +133,6 @@ function SignUpForm({ signup }) {
             //   accept="image/png, image/jpeg"
               className="form-control"
               onChange={handleChange}
-              // value={formData.photo.name}
             />
 
             <label htmlFor="SignUpForm-hobbies">

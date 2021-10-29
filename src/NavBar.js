@@ -7,14 +7,18 @@ import "./NavBar.css";
  *
  * When user is logged in, shows links to main areas of site. When not,
  * shows link to Login and Signup forms.
+ * 
+ * Props: 
+ * logout - function passed from App
  *
- * Rendered by App.
+ * App -> NavBar
  */
 
 function NavBar({ logout }) {
   const { currentUser } = useContext(UserContext);
-  console.debug("NavBar", "currentUser=", currentUser);
+  console.log("* NavBar", "currentUser=", currentUser);
 
+  /** returns HTML for a logged in user  */
   function loggedInNav() {
     return (
       <ul className="navbar-nav ms-auto">
@@ -37,6 +41,7 @@ function NavBar({ logout }) {
     );
   }
 
+  /** returns HTML for a logged out user */
   function loggedOutNav() {
     return (
       <ul className="navbar-nav ms-auto">

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Redirect } from "react-router-dom";
 import jwt from "jsonwebtoken";
+import useLocalStorage from "./useLocalStorage";
 import FrienderApi from './api';
 import './App.css';
 import NavBar from './NavBar';
@@ -9,17 +10,28 @@ import UserContext from "./UserContext";
 import LoadingSpinner from "./LoadingSpinner";
 import "bootstrap/dist/css/bootstrap.css";
 
-/**
+export const TOKEN_STORAGE_ID = "friender-token";
+
+/** Friender Application 
  * 
+ * State: 
+ * - token - for logged in users, this is their authentication JWT.
+ * - currentUser - user obj from API. This becomes the canonical way to tell
+ *   if someone is logged in. This is passed around via context throughout app.
+ * - goRedirect - boolean to indicate whether or not we should redirect.
+ * - infoLoaded - boolean, has user data been pulled from API?
  * 
+ * App -> {NavBar, Routes}
  */
 function App() {
-  const [token, setToken] = useState("");
+  const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
   const [currentUser, setCurrentUser] = useState(null);
   const [goRedirect, setGoRedirect] = useState(false);
   const [infoLoaded, setInfoLoaded] = useState(false);
 
-  console.log("* App ", {token, currentUser, goRedirect, infoLoaded});
+  console.log("* App ", { token, currentUser, goRedirect, infoLoaded });
+
+  /** Effect triggered by token change, updates currentUser based on token */
   useEffect(function loadUserInfo() {
     console.debug("App useEffect loadUserInfo", "token=", token);
 
@@ -42,10 +54,6 @@ function App() {
       }
       setInfoLoaded(true);
     }
-
-    // set infoLoaded to false while async getCurrentUser runs; once the
-    // data is fetched (or even if an error happens!), this will be set back
-    // to false to control the spinner.
     setInfoLoaded(false);
     getCurrentUser();
   }, [token]);
@@ -56,7 +64,7 @@ function App() {
     setToken(null);
   }
 
-  /** */
+  /** Handles new user signup, sets token received from server */
   async function signup(formData) {
 
     let dataForBackend = new FormData();
@@ -65,40 +73,33 @@ function App() {
       dataForBackend.append(key, formData[key]);
     };
 
-
     const token = await FrienderApi.registerUser(dataForBackend);
     setToken(token);
     setGoRedirect(true);
   }
 
-  /** Handles site-wide login.
-   *
-   * Logs in a user and sets goRedirect state to true.
-   *
-   * Make sure you await this function to see if any error happens.
-   */
-   async function login(loginData) {
+  /** Handles site-wide login and sets token */
+  async function login(loginData) {
     let token = await FrienderApi.login(loginData);
     setToken(token);
     setGoRedirect(true);
   }
 
+  // after login/signup success, redirect to /users
+  if (goRedirect) return <Redirect push to="/users" />;
 
-    // after login/signup success, redirect to /
-    if (goRedirect) return <Redirect push to="/" />;
-
-    if (!infoLoaded) return <LoadingSpinner />;
+  if (!infoLoaded) return <LoadingSpinner />;
 
   return (
     <UserContext.Provider
-    value={{
-      currentUser,
-      setCurrentUser
-    }}>
-    <div className="App">
-      < NavBar logout={logout} />
-      < Routes signup={signup} login={login} />
-    </div>
+      value={{
+        currentUser,
+        setCurrentUser
+      }}>
+      <div className="App">
+        < NavBar logout={logout} />
+        < Routes signup={signup} login={login} />
+      </div>
     </UserContext.Provider>
   );
 }
