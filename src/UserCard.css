@@ -2,5 +2,6 @@
     width: 100px;
 }
 .UserCard {
-    height: 100vh;
+    height: 50vh;
+    width: 50vw;
 }

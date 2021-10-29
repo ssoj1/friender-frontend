@@ -26,7 +26,7 @@ function UserList() {
     if (!users) return <LoadingSpinner />;
 
     return (
-        <div className="UserList" >
+        <div className="UserList justify-content-center" >
             <div className="UserCard col-md-8 offset-md-2">
                 {users.map(u => (
                     <UserCard

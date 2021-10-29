@@ -54,23 +54,23 @@ function SignUpForm({ signup }) {
 
   return (
 
-    <div className="row justify-content-center pt-3">
+    <div className="row justify-content-center pt-1">
       <h2>Sign Up</h2>
-        <form className="SignUpForm m-3 mx-5" onSubmit={handleSubmit}>
+        <form className="SignUpForm m-0 mx-5 row form-horizontal" onSubmit={handleSubmit}>
 
-          <div className="form-group col-md-4 offset-md-4 justify-content-evenly mt-5">
-            <label htmlFor="SignUpForm-username">
-              Username
-            </label>
-            <input
-              id="SignUpForm-username"
-              name="username"
-              className="form-control"
-              onChange={handleChange}
-              value={formData.username}
-              aria-label="Username"
-            />
-
+          <div className="col-md-4 offset-md-4 justify-content-evenly mt-1">
+              <label htmlFor="SignUpForm-username">
+                Username
+              </label>
+              <input
+                id="SignUpForm-username"
+                name="username"
+                className="form-control"
+                onChange={handleChange}
+                value={formData.username}
+                aria-label="Username"
+              />
+            
             <label htmlFor="SignUpForm-firstName">
               First Name
             </label>

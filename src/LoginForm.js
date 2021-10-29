@@ -46,20 +46,20 @@ function LoginForm({ login }) {
   }
 
   return (
-    <div className="LoginForm">
-      <div className="form-group col-md-4 offset-md-4 justify-content-evenly mt-5">
-        <h3 className="mb-3">Log In</h3>
+    <div className="row justify-content-center pt-1">
+      <h2>Log In</h2>
+      <form className="LoginForm row mt-1" onSubmit={handleSubmit}>
 
-        <form className="LoginForm row mt-3" onSubmit={handleSubmit}>
-          <label className="form-label">Username</label>
-          <input
-            name="username"
-            className="form-control"
-            value={formData.username}
-            onChange={handleChange}
-            autoComplete="username"
-            required
-          />
+        <div className="col-md-4 offset-md-4 justify-content-evenly mt-1">
+            <label className="form-label ">Username</label>
+            <input
+              name="username"
+              className="form-control"
+              value={formData.username}
+              onChange={handleChange}
+              autoComplete="username"
+              required
+            />
 
           <label className="form-label">Password</label>
           <input
@@ -76,14 +76,12 @@ function LoginForm({ login }) {
             ? <Alert type="danger" messages={formErrors} />
             : null}
 
-          <div className="row justify-content-evenly">
-            <button className="btn btn-primarybtn btn-sm Submit-Btn mt-2 mb-5 col-auto" onClick={handleSubmit}>
+            <button className="btn-primary rig btn btn-sm LoginForm-Button mt-4" onClick={handleSubmit}>
               Submit
             </button>
-          </div>
 
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 }

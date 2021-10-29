@@ -1,20 +1,14 @@
-.Navigation {
+.NavBar {
   text-align: left;
   font-weight: bold;
+  background-color: white;
 }
-
-.nav-item a:hover {
-  background-color: #4991FD;
-  padding: 10%;
-} 
-
-.nav-item a.active {
+.nav-link.active {
   font-weight: bold;
-  background-color: #4991FD;
-  padding: 10%;
+  color: #033785;
 }
 
-.nav-link {
+/* .nav-link {
   text-decoration: none;
   color: white;
-}
+} */

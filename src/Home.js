@@ -3,21 +3,21 @@ import React, { useContext } from "react";
 import "./Home.css";
 import UserContext from "./UserContext";
 
-/** Homepage of site.
+/** Home page of site.
  *
  * Shows welcome message or login/register buttons.
  *
  * Routed at /
  *
- * Routes -> Homepage
+ * Routes -> Home
  */
 
-function Homepage() {
+function Home() {
   const { currentUser } = useContext(UserContext);
-  console.debug("* Homepage", "currentUser=", currentUser);
+  console.debug("* Home", "currentUser=", currentUser);
 
   return (
-    <div className="Homepage container text-center mt-5">
+    <div className="Home container text-center mt-5">
       <div className="container text-center">
         <h1 className="mb-4 fw-bold">Friender</h1>
         <p className="lead">The best place on the internet for making new friends.</p>
@@ -42,4 +42,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default Home;
