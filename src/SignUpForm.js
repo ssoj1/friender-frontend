@@ -19,28 +19,16 @@ function SignUpForm({ signup }) {
 
   const [formData, setFormData] = useState(initialFormData);
   const [message, setMessage] = useState(null);
-  // const [redirectRequired, setRedirectRequired] = useState(false);
-  // const [photo, setPhoto] = useState(null);
 
-  console.log("* SignUpForm ", {
-    signup,
-    formData,
-    message
-    // redirectRequired
-  });
+  console.log("* SignUpForm ", { signup, formData, message });
 
   /** Update form input. */
   function handleChange(evt) {
     const { name, value } = evt.target;
     let files = evt.target.files;
     console.log("evt.target.files: ", evt.target.files)
-    // console.log("evt.target.files[0]: ", evt.target.files[0])
-    // let file = files ? evt.target.files[0] : null;
-    let file = !files ? formData.photo : evt.target.files[0];
-    console.log("files: ", files)
-    console.log("file: ", file)
-    // console.log("photo: ", photo)
 
+    let file = !files ? formData.photo : evt.target.files[0];
 
     setFormData(fData => ({
       ...fData,
@@ -53,6 +41,7 @@ function SignUpForm({ signup }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
     console.log("Check out formData ->", formData);
+
     try {
       await signup(formData);
       // setRedirectRequired(true);

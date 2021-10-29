@@ -52,18 +52,18 @@ class FrienderApi {
     return res.token;
   }
 
-
-
-
-
-  // Individual API routes
-
-
   static async getUsers() {
       const res = await this.request('users');
       console.log("res.users is ", res.users);
       return res.users;
   }
+
+
+
+
+
+
+
 
   // static async checkUserCredentials(username, password) {
   //   const credentials = {
@@ -101,8 +101,6 @@ class FrienderApi {
    * throws error if not successful
    * */
   static async registerUser(userData) {
-    // console.log("registerUser userData.get('username') ", userData.get('username'));
-    // console.log("registerUser userData.get('username') ", userData.get('username'));
 
     const res = await this.request(`auth/register`, userData, 'post');
     console.log("register res: ", res);

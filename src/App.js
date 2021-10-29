@@ -57,8 +57,6 @@ function App() {
 
   /** */
   async function signup(formData) {
-    // console.log("In handleSignup formdata: ", formData);
-    // loop through and append each key/value pair into new FofmData class 
 
     let dataForBackend = new FormData();
 
@@ -66,13 +64,11 @@ function App() {
       dataForBackend.append(key, formData[key]);
     };
 
-    // console.log("dataForBackend.get('username') is ", dataForBackend.get("username"))
 
     const token = await FrienderApi.registerUser(dataForBackend);
     setToken(token);
     setGoRedirect(true);
   }
-
 
   /** Handles site-wide login.
    *
@@ -85,6 +81,7 @@ function App() {
     setToken(token);
     setGoRedirect(true);
   }
+
 
     // after login/signup success, redirect to /
     if (goRedirect) return <Redirect push to="/" />;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Home from "./Home";
-import UsersList from "./UsersList";
+import UserList from "./UserList";
 import FriendList from "./FriendList";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
@@ -16,11 +16,12 @@ import PrivateRoute from "./PrivateRoute";
  * Visiting a non-existant route redirects to the homepage.
  */
 
-function Routes({ login, signup }) {
+function Routes({ login, signup, users }) {
   console.debug(
     "Routes",
     `login=${typeof login}`,
-    `register=${typeof register}`,
+    `signup=${typeof signup}`,
+    users,
   );
 
   return (
@@ -39,9 +40,9 @@ function Routes({ login, signup }) {
           <SignUpForm signup={signup} />
         </Route>
 
-        {/* <PrivateRoute exact path="/users">
-          <UsersList />
-        </PrivateRoute> */}
+        <PrivateRoute exact path="/users">
+          <UserList />
+        </PrivateRoute>
 
         {/* <PrivateRoute exact path="/friends">
           <FriendList />
