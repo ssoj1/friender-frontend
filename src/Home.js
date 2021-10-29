@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-// import "./Homepage.css";
+// import { Link } from "react-router-dom";
+import "./Home.css";
 import UserContext from "./UserContext";
 
 /** Homepage of site.
@@ -17,7 +17,7 @@ function Homepage() {
   console.debug("* Homepage", "currentUser=", currentUser);
 
   return (
-    <div className="Homepage">
+    <div className="Homepage container text-center mt-5">
       <div className="container text-center">
         <h1 className="mb-4 fw-bold">Friender</h1>
         <p className="lead">The best place on the internet for making new friends.</p>
@@ -27,14 +27,14 @@ function Homepage() {
           </h2>
           : (
             <p>
-              <Link className="btn btn-primary fw-bold me-3"
+              {/* <Link className="btn btn-primary fw-bold me-3"
                 to="/auth/token">
                 Log in
               </Link>
               <Link className="btn btn-primary fw-bold"
                 to="/auth/register">
                 Sign up
-              </Link>
+              </Link> */}
             </p>
           )}
       </div>

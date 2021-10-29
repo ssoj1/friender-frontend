@@ -1,0 +1,20 @@
+.Navigation {
+  text-align: left;
+  font-weight: bold;
+}
+
+.nav-item a:hover {
+  background-color: #4991FD;
+  padding: 10%;
+} 
+
+.nav-item a.active {
+  font-weight: bold;
+  background-color: #4991FD;
+  padding: 10%;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+}

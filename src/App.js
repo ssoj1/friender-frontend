@@ -7,6 +7,7 @@ import NavBar from './NavBar';
 import Routes from './Routes';
 import UserContext from "./UserContext";
 import LoadingSpinner from "./LoadingSpinner";
+import "bootstrap/dist/css/bootstrap.css";
 
 /**
  * 

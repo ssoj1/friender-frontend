@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Alert from "./Alert";
+import "./SignUpForm.css";
 
 /** 
  * 
@@ -55,9 +56,9 @@ function SignUpForm({ signup }) {
 
     <div className="row justify-content-center pt-3">
       <h2>Sign Up</h2>
-        <form className="SignUpForm col-8" onSubmit={handleSubmit}>
+        <form className="SignUpForm m-3 mx-5" onSubmit={handleSubmit}>
 
-          <div className="form-group">
+          <div className="form-group col-md-4 offset-md-4 justify-content-evenly mt-5">
             <label htmlFor="SignUpForm-username">
               Username
             </label>
@@ -69,8 +70,7 @@ function SignUpForm({ signup }) {
               value={formData.username}
               aria-label="Username"
             />
-          </div>
-          <div className="form-group">
+
             <label htmlFor="SignUpForm-firstName">
               First Name
             </label>
@@ -82,8 +82,7 @@ function SignUpForm({ signup }) {
               value={formData.firstName}
               aria-label="First Name"
             />
-          </div>
-          <div className="form-group">
+
             <label htmlFor="SignUpForm-lastName">
               Last Name
             </label>
@@ -95,8 +94,7 @@ function SignUpForm({ signup }) {
               value={formData.lastName}
               aria-label="Last Name"
             />
-          </div>
-          <div className="form-group">
+
             <label htmlFor="SignUpForm-email">
               Email
             </label>
@@ -108,8 +106,7 @@ function SignUpForm({ signup }) {
               value={formData.email}
               aria-label="email"
             />
-          </div>
-          <div className="form-group">
+
             <label htmlFor="SignUpForm-zipcode">
               Zip Code
             </label>
@@ -121,8 +118,7 @@ function SignUpForm({ signup }) {
               value={formData.zipcode}
               aria-label="zipcode"
             />
-          </div>
-          <div className="form-group">
+
             <label htmlFor="SignUpForm-photo">
               Photo
             </label>
@@ -135,8 +131,7 @@ function SignUpForm({ signup }) {
               onChange={handleChange}
               // value={formData.photo.name}
             />
-          </div>
-          <div className="form-group">
+
             <label htmlFor="SignUpForm-hobbies">
               Hobbies
             </label>
@@ -147,8 +142,7 @@ function SignUpForm({ signup }) {
               onChange={handleChange}
               value={formData.hobbies}
             />
-          </div>
-          <div className="form-group">
+
             <label htmlFor="SignUpForm-interests">
               Interests
             </label>
@@ -159,8 +153,7 @@ function SignUpForm({ signup }) {
               onChange={handleChange}
               value={formData.interests}
             />
-          </div>
-          <div className="form-group">
+
             <label htmlFor="SignUpForm-password">
               Password
             </label>
