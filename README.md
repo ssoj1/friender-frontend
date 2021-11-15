@@ -1,4 +1,4 @@
-#Friender Frontend
+# friender-frontend
 
 Tinder Clone. A site where users can create basic profiles with their name, zip code, hobbies, interests, etc. They can then see a list of other users.
 
